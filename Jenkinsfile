@@ -8,6 +8,7 @@ node {
 	}
 
 withCredentials([[$class: 'FileBinding', credentialsId: 'jwt_key', variable: 'JWT_KEY']]) {
+	'sh env'
 	echo "${env.JWT_KEY}"
 	if (env.BRANCH_NAME == 'master') {
 		stage('m1') {}
