@@ -7,6 +7,8 @@ node {
 		echo env.BRANCH_NAME
 	}
 
+withCredentials([[$class: 'FileBinding', credentialsId: 'jwt_key', variable: 'JWT_KEY']]) {
+	echo "${env.JWT_KEY}"
 	if (env.BRANCH_NAME == 'master') {
 		stage('m1') {}
 		stage('m2') {}
@@ -15,4 +17,5 @@ node {
 		stage('o2') {}
 		stage('o3') {}
 	}
+}
 }
