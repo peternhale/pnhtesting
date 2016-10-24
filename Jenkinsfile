@@ -4,7 +4,7 @@ node {
 		checkout scm
 		sh 'env'
 	}
-	Matcher myMatcher = "env.JOB_NAME.toLowerCase()" =~ /testPNH/
+	java.util.regex.Matcher myMatcher = env.JOB_NAME.toLowerCase() =~ /testPNH/
 	if (myMatcher.matches()) {
 		echo 'hit'
 	} else {
