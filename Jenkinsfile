@@ -4,22 +4,33 @@ node {
 		checkout scm
 		sh 'env'
 	}
-	java.util.regex.Matcher myMatcher = env.JOB_NAME.toLowerCase() =~ /.*testpnh.*/
-	if (env.JOB_NAME.toLowerCase().matches(/.*testpnh.*/)) {
-		echo 'hit'
+
+	if (env.JOB_NAME.toLowerCase().matches(/.*unit.*/)) {
+		doUnitTests();
+	} else (env.JOB_NAME.toLowerCase().matches(/.*integration.*/)) {
+		doIntegrationTests()
 	} else {
-		echo 'no hit'
+		doUnitTests();
 	}
 }
 
 def doUnitTests() {
-	stage('unit tests') {
+	stage('unit tests 1') {
+		echo 'unit tests'
+	}
+	stage('unit tests 2') {
 		echo 'unit tests'
 	}
 }
 
 def doIntegrationTests() {
-	stage('integration tests') {
+	stage('integration tests 1') {
+		echo 'integration tests'
+	}
+	stage('integration tests 2') {
+		echo 'integration tests'
+	}
+	stage('integration tests 3') {
 		echo 'integration tests'
 	}
 }
