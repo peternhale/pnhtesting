@@ -5,7 +5,7 @@ node {
 		sh 'env'
 	}
 	java.util.regex.Matcher myMatcher = env.JOB_NAME.toLowerCase() =~ /.*testpnh.*/
-	if (myMatcher.matches()) {
+	if (env.JOB_NAME.toLowerCase().matches(/.*testpnh.*/)) {
 		echo 'hit'
 	} else {
 		echo 'no hit'
