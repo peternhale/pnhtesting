@@ -6,20 +6,12 @@ node {
 	}
 
 	if (env.JOB_NAME.toLowerCase().matches('unit')) {
-		doUnitTests();
-	} else (env.JOB_NAME.toLowerCase().matches('integration')) {
-		doIntegrationTests()
-	}
-}
-
-def doUnitTests() {
 	stage('unit tests') {
 		echo 'unit tests'
 	}
-}
-
-def doIntegrationTests() {
+	} else (env.JOB_NAME.toLowerCase().matches('integration')) {
 	stage('integration tests') {
 		echo 'integration tests'
+	}
 	}
 }
