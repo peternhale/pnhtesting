@@ -4,8 +4,9 @@ node {
 	stage('checkout source') {
 		// when running in multi-branch job, one must issue this command
 		checkout scm
-		echo env.BRANCH_NAME
-		env.each{ k, v -> println "${k}:${v}" }
+		for ( e in env ) {
+    			print "key = ${e.key}, value = ${e.value}"
+		}	
 	}
 
 	if (env.BRANCH_NAME == 'master') {
