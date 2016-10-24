@@ -5,10 +5,12 @@ node {
 		sh 'env'
 	}
 
-	if (env.JOB_NAME.toLowerCase().matches('unit')) {
-		doUnitTests();
-	} else (env.JOB_NAME.toLowerCase().matches('integration')) {
-		doIntegrationTests()
+	configFileProvider([configFile(fileId: '4f4a2a99-5a51-4856-ae63-b8181f49f45d', variable: 'matchers')]) {
+		if (matchers.strMatches(env.JOB_NAME, 'unit')) {
+			doUnitTests();
+		} else (matchers.strMatches(env.JOB_NAME, 'integration')) {
+			doIntegrationTests()
+		}
 	}
 }
 
