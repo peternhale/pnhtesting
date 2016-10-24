@@ -7,7 +7,7 @@ node {
 
 	if (env.JOB_NAME.toLowerCase().matches(/.*unit.*/)) {
 		doUnitTests();
-	} else (env.JOB_NAME.toLowerCase().matches(/.*integration.*/)) {
+	} else if (env.JOB_NAME.toLowerCase().matches(/.*integration.*/)) {
 		doIntegrationTests()
 	} else {
 		doUnitTests();
