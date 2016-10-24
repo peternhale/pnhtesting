@@ -5,7 +5,7 @@ node {
 		sh 'env'
 	}
 	def unit = ~/testPNH/
-	if (unit.matches(env.JOB_NAME.toLowerCase()) {
+	if (unit.matches(env.JOB_NAME.toLowerCase())) {
 		echo 'hit'
 	} else {
 		echo 'no hit'
