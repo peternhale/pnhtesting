@@ -4,13 +4,10 @@ node {
 		checkout scm
 		sh 'env'
 	}
-
-	configFileProvider([configFile(fileId: '4f4a2a99-5a51-4856-ae63-b8181f49f45d', variable: 'matchers')]) {
-		if (matchers.strMatches(env.JOB_NAME, 'unit')) {
-			doUnitTests();
-		} else (matchers.strMatches(env.JOB_NAME, 'integration')) {
-			doIntegrationTests()
-		}
+	def m = "foobar" =~ /quux/
+	if (m.getCount()) {
+    // example won't get here as "quux" doesn't exist in "foobar", the count is 0
+        echo m[0]
 	}
 }
 
