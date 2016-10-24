@@ -5,6 +5,7 @@ node {
 		// when running in multi-branch job, one must issue this command
 		checkout scm
 		echo env.BRANCH_NAME
+		env.each{ k, v -> println "${k}:${v}" }
 	}
 
 	if (env.BRANCH_NAME == 'master') {
