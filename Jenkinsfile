@@ -15,4 +15,7 @@ node {
 		stage('o2') {}
 		stage('o3') {}
 	}
+	
+	stage('last') {
+	}
 }
