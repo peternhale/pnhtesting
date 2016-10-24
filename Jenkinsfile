@@ -4,10 +4,11 @@ node {
 		checkout scm
 		sh 'env'
 	}
-	def m = "foobar" =~ /quux/
-	if (m.getCount()) {
-    // example won't get here as "quux" doesn't exist in "foobar", the count is 0
-        echo m[0]
+	def unit = ~/testPNH/
+	if (unit.matches(env.JOB_NAME.toLowerCase()) {
+		echo 'hit'
+	} else {
+		echo 'no hit'
 	}
 }
 
